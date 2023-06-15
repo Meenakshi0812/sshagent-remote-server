@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Git Repository') {
             steps {
                 script {
-                    def clonePath = "/home/ubuntu/build_${env.BUILD_NUMBER}"
+                    def clonePath = "/home/ec2-user/build_${env.BUILD_NUMBER}"
                     dir(clonePath) {
                         git branch: 'main', url: 'https://github.com/Meenakshi0812/sshagent-remote-server.git'
                     }
@@ -18,7 +18,7 @@ pipeline {
                 script {
                     def folderName = "build_${env.BUILD_NUMBER}"
                     def zipFileName = "${folderName}.zip"
-                    sh "cd /home/ubuntu && zip -r ${zipFileName} ${folderName}/*"
+                    sh "cd /home/ec2-user && zip -r ${zipFileName} ${folderName}/*"
                 }
             }
         }
