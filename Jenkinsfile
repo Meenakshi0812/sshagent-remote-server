@@ -37,7 +37,7 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sshagent(credentials: ['your-ssh-credentials-id']) {
+                sshagent(credentials: ['aplication-server-ssh']) {
                     script {
                         def folderName = "build_${env.BUILD_NUMBER}"
                         def zipFileName = "${folderName}.zip"
